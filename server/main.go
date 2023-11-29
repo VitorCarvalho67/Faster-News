@@ -3,6 +3,7 @@ package main
 import (
 	"main/models"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -29,6 +30,12 @@ func GetDB() *gorm.DB {
 func main() {
 	db := GetDB()
 	r := gin.Default()
+
+	r.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"http://localhost:5173"}, // Substitua PORTA_DO_CLIENTE pela porta do seu cliente Svelte
+		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
+		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+	}))
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
