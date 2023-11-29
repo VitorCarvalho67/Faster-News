@@ -43,6 +43,3 @@ Run client side
 ```bash
 npm run dev
 ```
-
-
-
