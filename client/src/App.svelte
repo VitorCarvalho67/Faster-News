@@ -1,31 +1,13 @@
 <script>
-  import { onMount } from 'svelte';
-  import { GetNews } from './services/api';
-
-  let dados = null;
-
-  onMount(async () =>{
-    try {
-      dados = await GetNews();
-    } catch (error) {
-      console.log(error);
-    }
-  });
-</script>
-
-<main>
-  <h1>Notícias</h1>
-  <!-- carregar os dados aqui -->
-    {#if dados}
-        {#each dados as dado}
-        <div>
-            <h2>{dado.title}</h2>
-            <p>{dado.body}</p>
-        </div>
-        {/each}
-    {/if}
-</main>
-
-<style>
-
-</style>
+    import { Router, Route } from 'svelte-routing';
+    import routes from './routers/router.js';
+  </script>
+  
+  <Router>
+    {#each Object.entries(routes) as [path, Component]}
+      <Route path={path}>
+        <Component/>
+      </Route>
+    {/each}
+  </Router>
+  
