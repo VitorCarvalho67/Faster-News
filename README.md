@@ -7,6 +7,7 @@
 This software is a news website developed with Go and Svelte as its core technologies. The primary objective of this project is to provide a platform that is fast and efficient, catering not only to user needs in terms of speed and performance but also serving as a valuable learning tool for those interested in the Svelte framework. The combination of Go and Svelte results in a swift user experience and a user-friendly interface, offering an ideal environment both for the dissemination of news and for professional development in the field of technology.
 
 ## How To Use
+
 Prerequisites
 - Go
 - Svelte
