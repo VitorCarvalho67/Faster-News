@@ -7,15 +7,15 @@ services:
       - "8080:8080"
     depends_on:
       - database
-    networks:
-      - FasterNews
     deploy:
       resources:
         limits:
           cpus: '0.15'
           memory: '0.4GB'
+    networks:
+      - FasterNews
 
-  api02: 
+  api02:
     <<: *api
     ports:
       - "8081:8080"
@@ -42,7 +42,7 @@ services:
     ports:
       - "5173:5173"
     depends_on:
-      - server
+      - nginx
     networks:
       - FasterNews
 
@@ -53,10 +53,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: 123pass
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: news
-      MYSQL_USER: testuser
-      MYSQL_PASSWORD: 123pass
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
       - ./data:/var/lib/mysql
     networks:
